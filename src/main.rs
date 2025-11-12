@@ -10,8 +10,8 @@ fn main(){
 
         let mut input = String::new();
         stdin().read_line(&mut input).unwrap();
-
-        let mut commands = input.trim().split(" .p ").peekable();
+        
+        let mut commands = input.trim().split(|c| c == '|' ).flat_map(|s| s.split(" .p ")).peekable();
         let mut previous_command = None;
 
         while let Some(command) = commands.next()  {
